@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+long long int N=1000001;
+long long int seive[1000001];
+long long int prefix[1000002];
+void gen_seive(){
+    seive[0]=seive[1]=0;
+    prefix[0]=prefix[1]=0;
+	for (int i=2;i<N;i++)
+		seive[i]=i;
+	for(int i=2;i*i<N;i++){
+	    prefix[i]=prefix[i-1]+seive[i];
+			if(seive[i]==i){
+				for(int j=i*i;j<=N;j+=i){
+				    if(seive[j]==j)
+					seive[j]=0;
+			}
+	}
+	}
+}
+int main(){
+gen_seive();
+int q;
+cin>>q;
+while(q--){
+    int l,r;
+    cin>>l>>r;
+    cout<<prefix[r]-prefix[l-1];
+    cout<<"\n";
+    
+}
+return 0;
+}
