@@ -1,0 +1,25 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int n,k;
+	cin>>n>>k;
+	int arr[n];
+	for(int i=0;i<n;i++)
+	cin>>arr[i];
+	map<int,int>mp;
+	int odd=0,ans=0;
+for(int i=0;i<n;i++){
+    if(arr[i]%2!=0)
+         odd++;
+    if(odd==k)
+        ans++;
+    int remain=odd-k;
+    if(mp.find(remain)!=mp.end()){
+        ans+=mp[remain];
+    }
+	mp[odd]++;	
+	}
+	cout<<ans;
+return 0;
+}
